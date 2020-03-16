@@ -24,7 +24,6 @@ import java.util.stream.Stream;
 @Slf4j
 public class CSVReader {
 
-
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     public List<Author> readAuthorCsv(String filename) {

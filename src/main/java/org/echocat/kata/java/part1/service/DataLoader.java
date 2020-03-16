@@ -2,11 +2,13 @@ package org.echocat.kata.java.part1.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.echocat.kata.java.part1.model.Publication;
 import org.echocat.kata.java.part1.repository.AuthorDao;
 import org.echocat.kata.java.part1.repository.PublicationDao;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -23,5 +25,11 @@ public class DataLoader {
         authorDao.addAllAuthors(csvReader.readAuthorCsv("org/echocat/kata/java/part1/data/authors.csv"));
         publicationDao.addAllPublications(csvReader.readBookCsv("org/echocat/kata/java/part1/data/books.csv"));
         publicationDao.addAllPublications(csvReader.readMagazineCsv("org/echocat/kata/java/part1/data/magazines.csv"));
+        printPublicationData();
+    }
+
+    private void printPublicationData() {
+        List<Publication> publications = publicationDao.getPublications();
+        publications.forEach(Publication::print);
     }
 }
