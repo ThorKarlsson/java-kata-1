@@ -7,12 +7,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PublicationService {
 
+    private final PublicationDao dao;
+
     @Autowired
-    private PublicationDao dao;
+    public PublicationService(PublicationDao publicationDao) {
+        this.dao = publicationDao;
+    }
 
     public List<Publication> getAllPublications() {
         return dao.getPublications();
@@ -24,8 +29,8 @@ public class PublicationService {
         return publications;
     }
 
-    public Publication getPublicationByIsbn(String isbn) {
-        return dao.getPublicationByIsbn(isbn).orElse(null);
+    public Optional<Publication> getPublicationByIsbn(String isbn) {
+        return dao.getPublicationByIsbn(isbn);
     }
 
     public List<Publication> getPublicationsByAuthor(String email) {

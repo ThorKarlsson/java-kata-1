@@ -1,5 +1,6 @@
 package org.echocat.kata.java.part1.controllers;
 
+import org.echocat.kata.java.part1.exceptions.NotFoundException;
 import org.echocat.kata.java.part1.model.Publication;
 import org.echocat.kata.java.part1.service.PublicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class PublicationController {
 
     @RequestMapping("/isbn/{isbn}")
     public Publication getPublicationById(@PathVariable("isbn") String isbn) {
-        return publicationService.getPublicationByIsbn(isbn);
+        return publicationService.getPublicationByIsbn(isbn).orElseThrow(() -> new NotFoundException("No publication found with that ISBN"));
     }
 
     @RequestMapping("/author/{email}")
