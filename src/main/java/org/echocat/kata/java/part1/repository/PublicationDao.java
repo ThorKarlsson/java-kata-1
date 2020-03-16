@@ -1,5 +1,6 @@
 package org.echocat.kata.java.part1.repository;
 
+import org.echocat.kata.java.part1.model.Magazine;
 import org.echocat.kata.java.part1.model.Publication;
 import org.springframework.stereotype.Repository;
 
@@ -37,4 +38,5 @@ public class PublicationDao {
                 .filter(p -> p.getAuthors().contains(email))
                 .collect(Collectors.toList());
     }
+
 }

@@ -30,6 +30,6 @@ public class DataLoader {
 
     private void printPublicationData() {
         List<Publication> publications = publicationDao.getPublications();
-        publications.forEach(Publication::print);
+        publications.forEach(p -> log.info(p.print()));
     }
 }
