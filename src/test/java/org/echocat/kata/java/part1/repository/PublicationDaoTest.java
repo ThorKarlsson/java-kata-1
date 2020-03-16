@@ -41,7 +41,7 @@ public class PublicationDaoTest {
         Optional<Publication> pub = dao.getPublicationByIsbn("A12");
 
         assertTrue(pub.isPresent());
-        assertEquals("Titles do not match", "A12", pub.get().getTitle());
+        assertEquals("Titles do not match", "A12", pub.get().getIsbn());
 
         pub = dao.getPublicationByIsbn("BLAH");
         assertFalse(pub.isPresent());
